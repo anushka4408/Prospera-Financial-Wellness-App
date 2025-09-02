@@ -3,6 +3,9 @@ import DashboardSummary from "./dashboard-summary";
 import PageLayout from "@/components/page-layout";
 //import ExpenseBreakDown from "./expense-breakdown";
 import ExpensePieChart from "./expense-pie-chart";
+
+import SpendingPatternCard from "@/components/spending-pattern/spending-pattern-card";
+
 import DashboardRecentTransactions from "./dashboard-recent-transactions";
 import { useState } from "react";
 import { DateRangeType } from "@/components/date-range-select";
@@ -31,10 +34,17 @@ const Dashboard = () => {
             <ExpensePieChart dateRange={dateRange} />
           </div>
         </div>
+        {/* Spending Patterns Section
+        <div className="w-full">
+          <SpendingPatternCard />
+        </div> */}
+
         {/* Dashboard Recent Transactions */}
         <div className="w-full mt-0">
           <DashboardRecentTransactions />
         </div>
+
+
       </PageLayout>
     </div>
   );

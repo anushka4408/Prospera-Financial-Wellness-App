@@ -8,10 +8,11 @@ export const isAuthRoute = (pathname: string): boolean => {
   };
   
   export const PROTECTED_ROUTES = {
-    OVERVIEW: "/overview",
-    TRANSACTIONS: "/transactions",
-    REPORTS: "/reports",
-    SETTINGS: "/settings",
-    SETTINGS_APPEARANCE: "/settings/appearance",
-    SETTINGS_BILLING: "/settings/billing",
-  };
+  OVERVIEW: "/overview",
+  TRANSACTIONS: "/transactions",
+  REPORTS: "/reports",
+  SETTINGS: "/settings",
+  SETTINGS_APPEARANCE: "/settings/appearance",
+  SETTINGS_BILLING: "/settings/billing",
+  FINANCIAL_HEALTH: "/financial-health",
+};

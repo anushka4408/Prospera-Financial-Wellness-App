@@ -27,3 +27,16 @@ export interface GetAllReportResponse {
 export interface UpdateReportSettingParams {
     isEnabled: boolean;
 }
+
+export interface GenerateReportResponse {
+    message: string;
+    period: string;
+    summary: {
+        income: number;
+        expenses: number;
+        balance: number;
+        savingsRate: number;
+        topCategories: { name: string; amount: number; percent: number }[];
+    };
+    insights: string[];
+}

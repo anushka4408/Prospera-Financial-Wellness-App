@@ -61,3 +61,52 @@ export interface ExpensePieChartBreakdownResponse {
     preset: PresetType;
   };
 }
+
+// ... existing code ...
+
+export interface SpendingPattern {
+  _id: string;
+  userId: string;
+  patternType: 'daily' | 'weekly' | 'monthly';
+  category: string;
+  averageAmount: number;
+  frequency: number;
+  trend: 'increasing' | 'decreasing' | 'stable';
+  confidence: number;
+  lastUpdated: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface SpendingPatternResponse {
+  success: boolean;
+  data: SpendingPattern[];
+}
+
+export interface SpendingPatternAnalysis {
+  daily: SpendingPattern[];
+  weekly: SpendingPattern[];
+  monthly: SpendingPattern[];
+}
+
+export interface TransactionStats {
+  totalTransactions: number;
+  expenseTransactions: number;
+  incomeTransactions: number;
+  dateRange: {
+    from: string;
+    to: string;
+  };
+  transactions: {
+    id: string;
+    type: string;
+    amount: number;
+    date: string;
+    category: string;
+  }[];
+}
+
+export interface TransactionStatsResponse {
+  success: boolean;
+  data: TransactionStats;
+}

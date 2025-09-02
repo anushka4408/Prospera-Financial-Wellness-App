@@ -9,7 +9,7 @@ import { calulateNextReportDate } from "../utils/helper";
 import { UpdateReportSettingType } from "../validators/report.validator";
 import { convertToDollarUnit } from "../utils/format-currency";
 import { format } from "date-fns";
-import { genAI, genAIModel } from "../config/google-ai.config";
+import { genAI } from "../config/google-ai.config";
 import { createUserContent } from "@google/genai";
 import { reportInsightPrompt } from "../utils/prompt";
 
@@ -238,7 +238,7 @@ async function generateInsightsAI({
     });
 
     const result = await genAI.models.generateContent({
-      model: genAIModel,
+      model: 'gemini-2.5-flash',
       contents: [createUserContent([prompt])],
       config: {
         responseMimeType: "application/json",

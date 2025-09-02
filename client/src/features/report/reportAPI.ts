@@ -1,5 +1,5 @@
 import { apiClient } from "@/app/api-client";
-import { GetAllReportResponse, UpdateReportSettingParams } from "./reportType";
+import { GetAllReportResponse, UpdateReportSettingParams, GenerateReportResponse } from "./reportType";
 
 export const reportApi = apiClient.injectEndpoints({
   endpoints: (builder) => ({
@@ -13,6 +13,15 @@ export const reportApi = apiClient.injectEndpoints({
           params: { pageNumber, pageSize },
         });
       },
+      providesTags: ["reports"],
+    }),
+
+    generateReport: builder.mutation<GenerateReportResponse, { from: string; to: string }>({
+      query: ({ from, to }) => ({
+        url: "/report/generate",
+        method: "GET",
+        params: { from, to },
+      }),
     }),
 
     updateReportSetting: builder.mutation<void, UpdateReportSettingParams>({
@@ -22,10 +31,21 @@ export const reportApi = apiClient.injectEndpoints({
         body: payload,
       }),
     }),
+
+    sendReportNow: builder.mutation<{ status: string; message: string }, { from?: string; to?: string }>({
+      query: ({ from, to }) => ({
+        url: "/report/send-now",
+        method: "POST",
+        body: { from, to },
+      }),
+      invalidatesTags: ["reports"],
+    }),
   }),
 });
 
 export const {
     useGetAllReportsQuery,
-    useUpdateReportSettingMutation
+    useUpdateReportSettingMutation,
+    useGenerateReportMutation,
+    useSendReportNowMutation,
 } = reportApi;

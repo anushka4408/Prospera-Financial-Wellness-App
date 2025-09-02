@@ -78,7 +78,7 @@ const SignInForm = ({
                   <FormLabel className="!font-normal">Email</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="subscribe2techwithemma@gmail.com"
+                      placeholder="prospera@gmail.com"
                       {...field}
                     />
                   </FormControl>
@@ -106,7 +106,7 @@ const SignInForm = ({
             {isLoading && <Loader className="h-4 w-4 animate-spin" />}
             Login
           </Button>
-          <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
+          {/* <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
             <span className="relative z-10 bg-[var(--bg-color)] dark:bg-background px-2 text-muted-foreground">
               Or continue with
             </span>
@@ -119,7 +119,7 @@ const SignInForm = ({
               />
             </svg>
             Login with GitHub
-          </Button>
+          </Button> */}
         </div>
         <div className="text-center text-sm">
           Don&apos;t have an account?{" "}
