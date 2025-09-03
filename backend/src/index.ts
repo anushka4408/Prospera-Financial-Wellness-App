@@ -19,6 +19,7 @@ import { getDateRange } from "./utils/date";
 import analyticsRoutes from "./routes/analytics.route";
 import spendingPatternRoutes from "./routes/spending-pattern.route";
 import financialHealthRoutes from "./routes/financial-health.route";
+import budgetForecastRoutes from "./routes/budget-forecast.route";
 // import aiFinancialRoutes from "./routes/ai-financial.route";
 
 
@@ -52,6 +53,7 @@ app.use(`${BASE_PATH}/report`, passportAuthenticateJwt, reportRoutes);
 app.use(`${BASE_PATH}/analytics`, passportAuthenticateJwt, analyticsRoutes);
 app.use(`${BASE_PATH}/spending-patterns`, passportAuthenticateJwt, spendingPatternRoutes);
 app.use(`${BASE_PATH}/financial-health`, passportAuthenticateJwt, financialHealthRoutes);
+app.use(`${BASE_PATH}/ai/budget-forecast`, passportAuthenticateJwt, budgetForecastRoutes);
 // app.use(`${BASE_PATH}/ai-financial`, passportAuthenticateJwt, aiFinancialRoutes);
 app.use(errorHandler);
 

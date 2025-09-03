@@ -266,7 +266,10 @@ const CustomInputForm: React.FC<CustomInputFormProps> = ({ onSubmit, isLoading }
                     <SelectItem value="other">Other</SelectItem>
                   </SelectContent>
                 </Select>
+
               </div>
+              <div></div>
+
               <div>
                 <Label htmlFor="timeHorizon">Time Horizon</Label>
                 <Select value={formData.timeHorizon} onValueChange={(value) => handleInputChange('timeHorizon', value)}>
