@@ -138,6 +138,23 @@ export class FinancialHealthService {
       date: { $gte: twelveMonthsAgo }
     });
     
+    // Check for insufficient data
+    if (transactions.length < 15) {
+      throw new Error(`Insufficient data for financial health assessment. You need at least 15 transactions over 12 months. Currently you have ${transactions.length} transactions. Please add more transactions and try again.`);
+    }
+
+    // Check for minimum category diversity
+    const uniqueCategories = new Set(transactions.map(t => t.category));
+    if (uniqueCategories.size < 4) {
+      throw new Error(`Insufficient category diversity for financial health assessment. You need at least 4 different spending categories. Currently you have ${uniqueCategories.size} categories: ${Array.from(uniqueCategories).join(', ')}. Please add transactions in more categories and try again.`);
+    }
+
+    // Check for income data
+    const incomeTransactions = transactions.filter(t => t.type === TransactionTypeEnum.INCOME);
+    if (incomeTransactions.length < 3) {
+      throw new Error(`Insufficient income data for financial health assessment. You need at least 3 income transactions over 12 months. Currently you have ${incomeTransactions.length} income transactions. Please add more income records and try again.`);
+    }
+    
     const user = await UserModel.findById(userId);
     
     return {
@@ -200,20 +217,20 @@ export class FinancialHealthService {
     
     User Profile:
     - Name: ${user?.name || 'User'}
-    - Monthly Income: $${monthlyIncome.toFixed(2)}
-    - Monthly Expenses: $${monthlyExpenses.toFixed(2)}
+    - Monthly Income: ₹${monthlyIncome.toFixed(2)}
+    - Monthly Expenses: ₹${monthlyExpenses.toFixed(2)}
     - Savings Rate: ${savingsRate.toFixed(2)}%
     - Total Transactions: ${transactions.length}
     - Analysis Period: Last 12 months
     
     Transaction Summary:
-    - Total Income: $${totalIncome.toFixed(2)}
-    - Total Expenses: $${totalExpenses.toFixed(2)}
-    - Net Savings: $${(totalIncome - totalExpenses).toFixed(2)}
+    - Total Income: ₹${totalIncome.toFixed(2)}
+    - Total Expenses: ₹${totalExpenses.toFixed(2)}
+    - Net Savings: ₹${(totalIncome - totalExpenses).toFixed(2)}
     
     Category Breakdown:
     ${Object.entries(categoryBreakdown)
-      .map(([category, amount]) => `- ${category}: $${amount.toFixed(2)}`)
+      .map(([category, amount]) => `- ${category}: ₹${amount.toFixed(2)}`)
       .join('\n')}
     
     Please provide a comprehensive financial health analysis in this exact JSON format:
@@ -601,12 +618,12 @@ USER PROFILE:
 - Time Horizon: ${customInput.timeHorizon}
 
 CURRENT FINANCIAL SITUATION:
-- Monthly Income: $${customInput.monthlyIncome}
-- Monthly Budget: $${customInput.monthlyBudget}
-- Net Worth: $${customInput.netWorth}
-- Emergency Fund: $${customInput.emergencyFund}
-- Debt Load: $${customInput.totalDebt}
-- Investment Portfolio: $${customInput.investmentPortfolio}
+- Monthly Income: ₹${customInput.monthlyIncome}
+- Monthly Budget: ₹${customInput.monthlyBudget}
+- Net Worth: ₹${customInput.netWorth}
+- Emergency Fund: ₹${customInput.emergencyFund}
+- Debt Load: ₹${customInput.totalDebt}
+- Investment Portfolio: ₹${customInput.investmentPortfolio}
 
 LIFE CONTEXT:
 - Location: ${customInput.location}
@@ -618,8 +635,8 @@ LIFE CONTEXT:
 - Has Children: ${customInput.hasChildren}
 
 TRANSACTION DATA (Last 12 months):
-- Total Income: $${enhancedData.totalIncome}
-- Total Expenses: $${enhancedData.totalExpenses}
+- Total Income: ₹${enhancedData.totalIncome}
+- Total Expenses: ₹${enhancedData.totalExpenses}
 - Savings Rate: ${enhancedData.savingsRate}%
 
 Please provide a personalized financial health analysis considering:
@@ -809,7 +826,7 @@ The response must have this exact structure:
     return {
       incomeExpenseRatio: {
         score: this.calculatePersonalizedIncomeExpenseRatio(monthlyIncome, monthlyExpenses, customInput),
-        analysis: `Your income-to-expense ratio analysis based on your monthly income of $${monthlyIncome} and budget of $${monthlyExpenses}.`,
+        analysis: `Your income-to-expense ratio analysis based on your monthly income of ₹${monthlyIncome} and budget of ₹${monthlyExpenses}.`,
         recommendations: [
           "Aim to keep expenses below 70% of income",
           "Consider increasing income sources if expenses are too high",
@@ -859,7 +876,7 @@ The response must have this exact structure:
     const insights = {
       summary: `Based on your profile as a ${customInput.age}-year-old ${customInput.careerStage} professional in ${customInput.location}, your financial health shows areas for improvement.`,
       keyStrengths: [
-        `You have a clear monthly budget of $${customInput.monthlyBudget}`,
+        `You have a clear monthly budget of ₹${customInput.monthlyBudget}`,
         `Your emergency fund provides some financial security`,
         `You're actively tracking your finances`
       ],

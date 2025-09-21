@@ -41,7 +41,13 @@ export default function Reports() {
         toast.success(`Report generated ${res.period}`);
       })
       .catch((err) => {
-        const msg = err?.data?.message || "Failed to generate report";
+        let msg = err?.data?.message || "Failed to generate report";
+        
+        // Handle insufficient data error specifically
+        if (err?.data?.message?.includes('Insufficient data')) {
+          msg = `⚠️ ${err.data.message}\n\nData Requirements:\n• Minimum 8 transactions in selected period\n• At least 3 different spending categories`;
+        }
+        
         toast.error(msg);
       });
   };
@@ -116,7 +122,7 @@ export default function Reports() {
                     <div className="text-sm text-muted-foreground">Income</div>
                     <div className="text-xl font-semibold">
                       {typeof report.summary.income === "number"
-                        ? `$${report.summary.income.toFixed(2)}`
+                        ? `₹${report.summary.income.toFixed(2)}`
                         : report.summary.income}
                     </div>
                   </div>
@@ -124,7 +130,7 @@ export default function Reports() {
                     <div className="text-sm text-muted-foreground">Expenses</div>
                     <div className="text-xl font-semibold">
                       {typeof report.summary.expenses === "number"
-                        ? `$${report.summary.expenses.toFixed(2)}`
+                        ? `₹${report.summary.expenses.toFixed(2)}`
                         : report.summary.expenses}
                     </div>
                   </div>
@@ -132,7 +138,7 @@ export default function Reports() {
                     <div className="text-sm text-muted-foreground">Balance</div>
                     <div className="text-xl font-semibold">
                       {typeof report.summary.balance === "number"
-                        ? `$${report.summary.balance.toFixed(2)}`
+                        ? `₹${report.summary.balance.toFixed(2)}`
                         : report.summary.balance}
                     </div>
                   </div>
@@ -147,7 +153,7 @@ export default function Reports() {
                   <ul className="list-disc pl-5 space-y-1">
                     {report.summary.topCategories?.map((c: any, idx: number) => (
                       <li key={`${c.name}-${idx}`}>
-                        {c.name}: {typeof c.amount === "number" ? `$${c.amount}` : c.amount} ({c.percent}%)
+                        {c.name}: {typeof c.amount === "number" ? `₹${c.amount}` : c.amount} ({c.percent}%)
                       </li>
                     ))}
                   </ul>

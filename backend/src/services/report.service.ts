@@ -161,6 +161,22 @@ export const generateReportService = async (
   )
     return null;
 
+  // Check for insufficient data
+  const totalTransactions = await TransactionModel.countDocuments({
+    userId: new mongoose.Types.ObjectId(userId),
+    date: { $gte: fromDate, $lte: toDate },
+    status: "COMPLETED",
+  });
+
+  if (totalTransactions < 8) {
+    throw new Error(`Insufficient data for report generation. You need at least 8 transactions in the selected period. Currently you have ${totalTransactions} transactions. Please add more transactions or select a longer time period and try again.`);
+  }
+
+  // Check for minimum category diversity
+  if (results[0]?.categories?.length < 3) {
+    throw new Error(`Insufficient category diversity for report generation. You need at least 3 different spending categories. Currently you have ${results[0]?.categories?.length || 0} categories. Please add transactions in more categories and try again.`);
+  }
+
   const {
     totalIncome = 0,
     totalExpenses = 0,

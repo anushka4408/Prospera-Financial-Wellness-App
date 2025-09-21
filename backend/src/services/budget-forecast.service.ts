@@ -58,6 +58,17 @@ export class BudgetForecastService {
 			status: "COMPLETED",
 		}).lean();
 
+		// Check for insufficient data
+		if (transactions.length < 10) {
+			throw new Error(`Insufficient data for budget forecasting. You need at least 10 transactions over ${months} months. Currently you have ${transactions.length} transactions. Please add more transactions and try again.`);
+		}
+
+		// Check for minimum category diversity
+		const uniqueCategories = new Set(transactions.map(t => t.category));
+		if (uniqueCategories.size < 3) {
+			throw new Error(`Insufficient category diversity for budget forecasting. You need at least 3 different spending categories. Currently you have ${uniqueCategories.size} categories: ${Array.from(uniqueCategories).join(', ')}. Please add transactions in more categories and try again.`);
+		}
+
 		const monthlyCategoryTotals = computeMonthlyCategoryTotals(transactions);
 		const estimatedMonthlyIncome = estimateMonthlyIncome(transactions, body.incomeOverride);
 

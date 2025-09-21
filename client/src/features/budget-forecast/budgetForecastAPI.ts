@@ -15,7 +15,7 @@ export const budgetForecastApi = apiClient.injectEndpoints({
 			query: () => ({ url: "/ai/budget-forecast/latest", method: "GET" }),
 			providesTags: ["transactions"],
 		}),
-		getBudgetForecastHistory: builder.query<BudgetForecastResponse & { pagination?: any }, { page?: number; limit?: number }>({
+		getBudgetForecastHistory: builder.query<BudgetForecastResponse & { pagination?: { page: number; limit: number; totalCount: number; totalPages: number; skip: number } }, { page?: number; limit?: number }>({
 			query: ({ page = 1, limit = 10 } = {}) => ({ url: "/ai/budget-forecast/history", method: "GET", params: { page, limit } }),
 			providesTags: ["transactions"],
 		}),
