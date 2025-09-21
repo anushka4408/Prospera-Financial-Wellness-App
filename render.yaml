@@ -10,13 +10,11 @@ services:
       - key: NODE_ENV
         value: production
       - key: PORT
-        value: 10000
+        value: 8000
       - key: BASE_PATH
         value: /api
       - key: MONGO_URI
-        fromDatabase:
-          name: prospera-database
-          property: connectionString
+        sync: false
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_REFRESH_SECRET
@@ -46,9 +44,3 @@ services:
     envVars:
       - key: VITE_API_BASE_URL
         value: https://prospera-backend.onrender.com/api
-
-  # Database
-  - type: pserv
-    name: prospera-database
-    env: mongodb
-    plan: free
