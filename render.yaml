@@ -1,0 +1,54 @@
+services:
+  # Backend Service
+  - type: web
+    name: prospera-backend
+    env: node
+    plan: free
+    buildCommand: cd backend && npm install && npm run build
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: BASE_PATH
+        value: /api
+      - key: MONGO_URI
+        fromDatabase:
+          name: prospera-database
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: RESEND_MAILER_SENDER
+        sync: false
+      - key: FRONTEND_ORIGIN
+        value: https://prospera-frontend.onrender.com
+
+  # Frontend Service
+  - type: web
+    name: prospera-frontend
+    env: static
+    plan: free
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: ./client/dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://prospera-backend.onrender.com/api
+
+  # Database
+  - type: pserv
+    name: prospera-database
+    env: mongodb
+    plan: free
