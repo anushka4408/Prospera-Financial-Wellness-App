@@ -3,7 +3,7 @@ services:
   - type: web
     name: prospera-backend
     env: node
-    plan: free
+    plan: starter
     buildCommand: cd backend && npm install && npm run build
     startCommand: cd backend && npm start
     envVars:
@@ -38,7 +38,7 @@ services:
   - type: web
     name: prospera-frontend
     env: static
-    plan: free
+    plan: starter
     buildCommand: cd client && npm install && npm run build
     staticPublishPath: ./client/dist
     envVars:
