@@ -1,37 +1,29 @@
-<div align="center">
+# 💸 Prospera — AI-Powered Financial Wellness Platform
 
-<img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="100%" />
-
-<h1>💸 Prospera — AI Financial Wellness Platform</h1>
-
-<p>
-🤖 AI-Powered Budgeting | 📊 Financial Insights | ☁️ Cloud-Native SaaS
-</p>
-
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=25&pause=1000&color=00F7FF&center=true&vCenter=true&width=800&lines=AI+Budget+Forecasting;Financial+Health+Scoring;MERN+%2B+Gemini+AI;Built+for+Real-World+Impact" />
-
-</div>
+> Intelligent Budget Forecasting • Financial Health Assessment • AI-Driven Insights
 
 ---
 
 ## 🚀 Live Demo
 
-🔗 **Frontend**: https://prospera-financial-wellness-app.onrender.com/
-🔗 **Backend API**: https://prospera-financial-wellness-app-backend.onrender.com
+* 🔗 Frontend: https://prospera-financial-wellness-app.onrender.com/
+* 🔗 Backend API: https://prospera-financial-wellness-app-backend.onrender.com
 
 ---
 
 ## 📑 Table of Contents
 
 * [Overview](#overview)
-* [Features](#features)
-* [Tech Stack](#tech-stack)
+* [Key Features](#key-features)
+* [Technology Stack](#technology-stack)
 * [Architecture](#architecture)
 * [AI Integration](#ai-integration)
 * [Installation](#installation)
-* [API](#api)
+* [API Endpoints](#api-endpoints)
 * [Security](#security)
+* [Performance](#performance)
 * [Deployment](#deployment)
+* [Project Impact](#project-impact)
 
 ---
 
@@ -39,78 +31,85 @@
 
 ## 🎯 Overview
 
-<img src="https://media.giphy.com/media/3oKIPEqDGUULpEU0aQ/giphy.gif" width="100%" />
+A **production-ready AI-powered financial SaaS platform** designed to help users:
 
-A **production-ready AI-powered financial SaaS platform** that helps users:
+* Track and manage expenses
+* Forecast future budgets using AI
+* Analyze financial health with scoring models
+* Receive personalized financial recommendations
 
-* 📊 Track expenses
-* 🔮 Predict budgets
-* 🧠 Analyze financial health
-* 🤖 Get AI-driven recommendations
-
-Built using **MERN + Google Gemini AI** 
+Built using **MERN Stack + Google Gemini AI** 
 
 ---
 
-<a id="features"></a>
+<a id="key-features"></a>
 
-## ✨ Features
+## ✨ Key Features
 
-<div align="center">
-<img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif" width="100%" />
-</div>
+### 🧠 AI Financial Health Assessment
 
-### 🧠 AI Financial Health
+* 0–100 financial health score
+* Multi-factor evaluation:
 
-* 0–100 financial score
-* Multi-factor analysis
-* Personalized AI insights
+  * Income vs Expenses
+  * Savings Rate
+  * Debt Ratio
+  * Emergency Fund
+* AI-generated recommendations
 
-### 🔮 Budget Forecasting
+---
 
-* Monthly & weekly forecasts
-* Risk detection
-* Confidence scoring
+### 🔮 Intelligent Budget Forecasting
 
-### 💰 Transaction System
+* Configurable forecasting (1–6 months)
+* Weekly / Monthly breakdown
+* Risk detection and confidence scoring
+* Category-wise budget suggestions
 
-* CRUD operations
+---
+
+### 💰 Transaction Management
+
+* Full CRUD operations
 * Recurring transactions
-* Category management
-
-### 📊 Analytics Dashboard
-
-* Spending trends
-* Charts (Recharts)
-* Export reports
-
-### 🔐 Security
-
-* JWT authentication
-* Input validation
-* Secure APIs
+* Category-based tracking
+* Payment method support
 
 ---
 
-<a id="tech-stack"></a>
+### 📊 Analytics & Reporting
 
-## 🛠️ Tech Stack
+* Spending pattern analysis
+* Financial dashboards
+* Exportable reports (CSV/PDF)
+* Scheduled report generation
 
-<div align="center">
-<img src="https://skillicons.dev/icons?i=react,nodejs,express,mongodb,typescript,aws,docker,tailwind" />
-</div>
+---
+
+### 🔐 User Management & Security
+
+* JWT-based authentication
+* Role-based access control
+* Secure APIs with validation
+
+---
+
+<a id="technology-stack"></a>
+
+## 🛠️ Technology Stack
 
 ### Frontend
 
-* React 19 + TypeScript
+* React 19
+* TypeScript
 * Tailwind CSS
 * Redux Toolkit
 
 ### Backend
 
-* Node.js + Express
+* Node.js
+* Express.js
 * MongoDB
-* JWT Authentication
 
 ### AI & Services
 
@@ -124,19 +123,15 @@ Built using **MERN + Google Gemini AI**
 
 ## 🏗️ Architecture
 
-<div align="center">
-
-```text
+```
 Frontend (React)
-       ↓
-Backend (Node + Express)
-       ↓
+        ↓
+Backend (Node.js + Express)
+        ↓
 MongoDB Database
-       ↓
+        ↓
 Google Gemini AI
 ```
-
-</div>
 
 ---
 
@@ -144,14 +139,19 @@ Google Gemini AI
 
 ## 🤖 AI Integration
 
-<img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" width="100%" />
+### AI Capabilities
 
-### What AI Does:
+* Financial health scoring
+* Budget prediction
+* Spending pattern analysis
+* Personalized recommendations
 
-* 🧠 Financial health scoring
-* 🔮 Budget predictions
-* 📊 Spending pattern analysis
-* 💡 Personalized recommendations
+### Example Flow
+
+1. User data is collected from transactions
+2. Backend processes financial metrics
+3. Gemini AI analyzes data
+4. Insights + recommendations are generated
 
 ---
 
@@ -159,29 +159,57 @@ Google Gemini AI
 
 ## ⚙️ Installation
 
-```bash
-# Clone repo
-git clone <repo-url>
+### 1. Clone Repository
 
-# Backend
+```
+git clone <repository-url>
+cd project
+```
+
+### 2. Install Dependencies
+
+**Backend**
+
+```
 cd backend
 npm install
+```
 
-# Frontend
+**Frontend**
+
+```
 cd client
 npm install
 ```
 
 ---
 
-<a id="api"></a>
+<a id="api-endpoints"></a>
 
-## 📡 API Highlights
+## 📡 API Endpoints
 
-```bash
+### Authentication
+
+```
+POST /api/auth/register
 POST /api/auth/login
+POST /api/auth/logout
+```
+
+### Transactions
+
+```
 GET /api/transaction
+POST /api/transaction
+PUT /api/transaction/:id
+DELETE /api/transaction/:id
+```
+
+### AI Features
+
+```
 POST /api/ai/budget-forecast
+GET /api/financial-health/latest
 GET /api/analytics/summary
 ```
 
@@ -189,12 +217,23 @@ GET /api/analytics/summary
 
 <a id="security"></a>
 
-## 🔐 Security Features
+## 🔐 Security
 
 * JWT Authentication
-* Secure APIs
 * Input validation
-* Data isolation
+* Secure API design
+* Data isolation per user
+
+---
+
+<a id="performance"></a>
+
+## ⚡ Performance
+
+* Optimized database queries
+* Async backend processing
+* Efficient state management (Redux)
+* Scalable architecture
 
 ---
 
@@ -202,40 +241,33 @@ GET /api/analytics/summary
 
 ## 🚀 Deployment
 
-<div align="center">
-<img src="https://media.giphy.com/media/l378bu6ZYmzS6nBrW/giphy.gif" width="100%" />
-</div>
-
 * Backend → Render
 * Frontend → Render
-* Database → MongoDB
-* AI → Gemini
+* Database → MongoDB Atlas
+* AI → Google Gemini
 
 ---
 
-## 📊 GitHub Stats
+<a id="project-impact"></a>
 
-<div align="center">
+## 🌟 Project Impact
 
-<img src="https://github-readme-stats.vercel.app/api?username=anushka4408&show_icons=true&theme=tokyonight&hide_border=true" />
-
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=anushka4408&theme=tokyonight&hide_border=true" />
-
-</div>
-
----
-
-## 🌟 Why This Project Stands Out
-
-* 🚀 Production-ready SaaS
-* 🤖 Real AI integration
-* 📊 Business-focused insights
-* 🔐 Secure architecture
+* ✅ AI-driven financial decision making
+* ✅ Real-time analytics for users
+* ✅ Scalable SaaS architecture
+* ✅ Production-ready deployment
 
 ---
 
-<div align="center">
+## 📌 Conclusion
 
-✨ *Built with AI + Cloud for real-world financial impact* ✨
+This project demonstrates:
 
-</div>
+* Full-stack engineering (MERN)
+* AI integration in real-world systems
+* Secure and scalable backend design
+* Cloud deployment practices
+
+---
+
+⭐ *Built to solve real-world financial problems using AI + Cloud*
