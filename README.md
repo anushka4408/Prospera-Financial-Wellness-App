@@ -5,6 +5,9 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7+-blue.svg)](https://www.typescriptlang.org/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-8+-green.svg)](https://www.mongodb.com/)
 [![AI-Powered](https://img.shields.io/badge/AI-Powered-Gemini-orange.svg)](https://ai.google.dev/)
+RENDER DEPLOYMENTS:
+BACKEND-https://prospera-financial-wellness-app-backend.onrender.com
+FRONTEND-https://prospera-financial-wellness-app.onrender.com/
 
 > A comprehensive AI-powered financial management platform that combines intelligent budget forecasting, financial health assessment, and spending pattern analysis using Google Gemini AI.
 
